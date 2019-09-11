@@ -16,9 +16,9 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.otf$/,
@@ -26,7 +26,7 @@ module.exports = {
           loader: 'url-loader',
         },
       },
-    ]
+    ],
   },
-  plugins: [new UglifyJsPlugin()]
+  plugins: [new UglifyJsPlugin()],
 };
