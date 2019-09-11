@@ -18,7 +18,7 @@ const ImageFooter = ({ image, openReportImagePopup }) => {
   return (
     <ImageFooterContainer>
       <ImageDescription
-        description={image.description}
+        description = {image.description}
         date={image.date}
         userSubmit={image.user_submit}
       />
