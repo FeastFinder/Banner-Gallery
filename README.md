@@ -50,3 +50,9 @@ npm run seed
 npm run build
 npm run start
 ```
+
+### RESTful CRUD API
+For creation: app.post('api/post/:listing')
+For reading: app.get('api/get/:listing')
+For updates: app.put('api/update/:listing')
+For deletion: app.delete('api/delete/:listing')
