@@ -52,7 +52,65 @@ npm run start
 ```
 
 ### RESTful CRUD API
-For creation: app.post('api/post/:listing')
-For reading: app.get('api/get/:listing')
-For updates: app.put('api/update/:listing')
-For deletion: app.delete('api/delete/:listing')
+```sh
+For creation: app.post('api/:listing/banner')
+  Adds new photos to photo gallery
+  Example Input:
+  [
+    {
+        "id": 34,
+        "url": "https://llaminati-images.s3-us-west-1.amazonaws.com/14.jpg",
+        "description": "quidem repellat magni",
+        "user_submit": 0,
+        "date": "2019-04-15T07:00:00.000Z",
+        "unrelated_flag": 0,
+        "inappropriate_flag": 0,
+        "dislike_flag": 0,
+        "listing_id": 1,
+        "image_id": 14
+    }
+  ]
+  Returns status 201 if successful
+
+For reading: app.get('api/:listing/banner')
+  Returns photos for current listing
+  Example Output:
+  [
+    {
+        "id": 34,
+        "url": "https://llaminati-images.s3-us-west-1.amazonaws.com/14.jpg",
+        "description": "quidem repellat magni",
+        "user_submit": 0,
+        "date": "2019-04-15T07:00:00.000Z",
+        "unrelated_flag": 0,
+        "inappropriate_flag": 0,
+        "dislike_flag": 0,
+        "listing_id": 1,
+        "image_id": 14
+    }
+  ]
+  Successful get requests return status 200
+
+For updates: app.put('api/:listing/banner')
+  Updates photo description
+  Example input:
+  [
+    {
+        "id": 34,
+        "url": "https://llaminati-images.s3-us-west-1.amazonaws.com/14.jpg",
+        "description": "quidem repellat magni",
+        "user_submit": 0,
+        "date": "2019-04-15T07:00:00.000Z",
+        "unrelated_flag": 0,
+        "inappropriate_flag": 0,
+        "dislike_flag": 0,
+        "listing_id": 1,
+        "image_id": 14
+    }
+  ]
+  Successful put returns status 200
+
+For deletion: app.delete('api/:listing/banner')
+  Deletes photo
+  Successful delete requests return status 204
+```
