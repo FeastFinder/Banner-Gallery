@@ -53,7 +53,7 @@ npm run start
 
 ### RESTful CRUD API
 ```sh
-For creation: app.post('api/post/:listing')
+For creation: app.post('api/:listing/banner')
   Adds new photos to photo gallery
   Example Input:
   [
@@ -72,7 +72,7 @@ For creation: app.post('api/post/:listing')
   ]
   Returns status 201 if successful
 
-For reading: app.get('api/get/:listing')
+For reading: app.get('api/:listing/banner')
   Returns photos for current listing
   Example Output:
   [
@@ -91,7 +91,7 @@ For reading: app.get('api/get/:listing')
   ]
   Successful get requests return status 200
 
-For updates: app.put('api/update/:listing')
+For updates: app.put('api/:listing/banner')
   Updates photo description
   Example input:
   [
@@ -110,7 +110,7 @@ For updates: app.put('api/update/:listing')
   ]
   Successful put returns status 200
 
-For deletion: app.delete('api/delete/:listing')
+For deletion: app.delete('api/:listing/banner')
   Deletes photo
   Successful delete requests return status 204
 ```
