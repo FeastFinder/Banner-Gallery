@@ -25,4 +25,3 @@ CREATE TABLE images (
   inappropriate_flag smallint,
   dislike_flag smallint
 );
-
