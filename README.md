@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/llaminati/Banner-Gallery
-  - https://github.com/llaminati/Menu
-  - https://github.com/llaminati/Reservations
-  - https://github.com/llaminati/Reviews
+  - https://github.com/feastfinder/Banner-Gallery
+  - https://github.com/feastfinder/Menu
+  - https://github.com/feastfinder/Reservations
+  - https://github.com/feastfinder/Reviews
 
 ## Table of Contents
 
@@ -53,12 +53,11 @@ npm run start
 
 ### RESTful CRUD API
 ```sh
-For creation: app.post('api/:listing/banner')
+POST '/api/restaurants/:id/photos'
   Adds new photos to photo gallery
   Example Input:
   [
     {
-        "id": 34,
         "url": "https://llaminati-images.s3-us-west-1.amazonaws.com/14.jpg",
         "description": "quidem repellat magni",
         "user_submit": 0,
@@ -70,9 +69,8 @@ For creation: app.post('api/:listing/banner')
         "image_id": 14
     }
   ]
-  Returns status 201 if successful
 
-For reading: app.get('api/:listing/banner')
+GET 'api/restaurants/:id/photos'
   Returns photos for current listing
   Example Output:
   [
@@ -89,9 +87,8 @@ For reading: app.get('api/:listing/banner')
         "image_id": 14
     }
   ]
-  Successful get requests return status 200
 
-For updates: app.put('api/:listing/banner')
+PUT 'api/photos/img_id'
   Updates photo description
   Example input:
   [
@@ -108,9 +105,7 @@ For updates: app.put('api/:listing/banner')
         "image_id": 14
     }
   ]
-  Successful put returns status 200
 
-For deletion: app.delete('api/:listing/banner')
+DELETE 'api/photos/img_id'
   Deletes photo
-  Successful delete requests return status 204
 ```
