@@ -26,4 +26,4 @@ CREATE TABLE listings_images (
   image_id int NOT NULL,
   FOREIGN KEY (listing_id) REFERENCES listings(id),
   FOREIGN KEY (image_id) REFERENCES images(id)
-)
+);
