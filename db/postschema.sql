@@ -5,7 +5,8 @@ CREATE DATABASE banner_images;
 \c banner_images;
 
 CREATE TABLE users (
-  user_name varchar(15) PRIMARY KEY,
+  id int PRIMARY KEY,
+  user_name varchar(15),
   avatar_url varchar(500)
 );
 
@@ -15,7 +16,7 @@ CREATE TABLE restaurants (
 );
 
 CREATE TABLE images (
-  id SERIAL PRIMARY KEY,
+  id PRIMARY KEY,
   restaurant_id int REFERENCES restaurants(restaurant_id),
   url varchar(500) NOT NULL,
   description varchar(255),
