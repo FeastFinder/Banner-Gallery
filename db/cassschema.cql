@@ -3,7 +3,8 @@ CREATE KEYSPACE banner_images WITH replication = {'class': 'SimpleStrategy', 're
 USE banner_images;
 
 CREATE TABLE users (
-  user_name varchar PRIMARY KEY,
+  id int PRIMARY KEY,
+  user_name varchar,
   avatar_url varchar
 );
 
@@ -13,12 +14,12 @@ CREATE TABLE restaurants (
 );
 
 CREATE TABLE images (
-  img_id int PRIMARY KEY,
+  id int PRIMARY KEY,
   restaurant_id int,
   url varchar,
   description varchar,
   user_name varchar,
-  date date,
+  date varchar,
   unrelated_flag smallint,
   inappropriate_flag smallint,
   dislike_flag smallint
