@@ -128,14 +128,10 @@ const url = ['https://reviewmodulepics.s3-us-west-2.amazonaws.com/1.jpg',
   'https://reviewmodulepics.s3-us-west-2.amazonaws.com/59.jpg',
   'https://reviewmodulepics.s3-us-west-2.amazonaws.com/60.jpg'];
 
-const getRandomInt = (min, max) => Math.floor(Math.random() * max + min);
-const getUrl = () => url[getRandomInt(0, 60)];
-// const getUserName = () => userTable[getRandomInt(0, 60)];
-
 for (let i = 0; i < 60; i += 1) {
   const id = i;
   const user_name = userTable[i];
-  const avatar_url = getUrl();
+  const avatar_url = url[i];
 
   writer.write({
     id,

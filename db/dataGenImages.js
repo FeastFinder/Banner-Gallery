@@ -1,11 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 const faker = require('faker');
-// const csvWriter = require('csv-write-stream');
 const fs = require('fs');
-
-// const writer = csvWriter();
-// writer.pipe(fs.createWriteStream('imgTable.csv'));
 
 const writeImg = fs.createWriteStream('imgTable.csv');
 writeImg.write('id,restaurant_id,url,description,user_name,date,unrelated_flag,inappropriate_flag,dislike_flag\n', 'utf8');
@@ -90,52 +86,15 @@ function writeManyRecords(writer, encoding, callback) {
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
-        // see if we should continue, or wait
-        // don't pass the callback, because we're not done yet.
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      // had to stop early!
-      // write some more once it drains
       writer.once('drain', write);
     }
   }
   write();
 }
-
-
-// for (let i = 0; i < 10000000; i += 1) {
-//   for (let j = 0; j < 10; j += 1) {
-//     const id = counter;
-//     const restaurant_id = i;
-//     const url = `https://foodpics.s3-us-west-1.amazonaws.com/food${getRandomInt(0, 101)}.jpg`;
-//     const description = getSentence();
-//     const user_name = getUserName();
-//     const date = getDate();
-//     const unrelated_flag = getRandomInt(0, 3);
-//     const inappropriate_flag = getRandomInt(0, 3);
-//     const dislike_flag = getRandomInt(0, 3);
-//     const ok = true;
-//     counter += 1;
-
-//     writer.write({
-//       id,
-//       restaurant_id,
-//       url,
-//       description,
-//       user_name,
-//       date,
-//       unrelated_flag,
-//       inappropriate_flag,
-//       dislike_flag,
-//     });
-//   }
-
-//   if (i % 100000 === 0) {
-//     console.log(i);
-//   }
-// }
 
 writeManyRecords(writeImg, 'utf-8', () => {
   writeManyRecords(writeImg, 'utf-8', () => {
