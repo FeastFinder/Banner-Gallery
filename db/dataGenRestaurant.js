@@ -9,11 +9,11 @@ writer.pipe(fs.createWriteStream('restTable.csv'));
 const getName = () => faker.lorem.words(2);
 
 for (let i = 0; i < 10000000; i += 1) {
-  const restaurant_id = i;
+  // const restaurant_id = i;
   const restaurant_name = getName();
 
   writer.write({
-    restaurant_id,
+    // restaurant_id,
     restaurant_name,
   });
 }

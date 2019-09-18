@@ -129,12 +129,12 @@ const url = ['https://reviewmodulepics.s3-us-west-2.amazonaws.com/1.jpg',
   'https://reviewmodulepics.s3-us-west-2.amazonaws.com/60.jpg'];
 
 for (let i = 0; i < 60; i += 1) {
-  const id = i;
+  // const id = i;
   const user_name = userTable[i];
   const avatar_url = url[i];
 
   writer.write({
-    id,
+    // id,
     user_name,
     avatar_url,
   });

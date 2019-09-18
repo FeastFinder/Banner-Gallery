@@ -14,7 +14,7 @@ CREATE TABLE restaurants (
 );
 
 CREATE TABLE images (
-  id int PRIMARY KEY,
+  id int,
   restaurant_id int,
   url varchar,
   description varchar,
@@ -22,5 +22,6 @@ CREATE TABLE images (
   date varchar,
   unrelated_flag smallint,
   inappropriate_flag smallint,
-  dislike_flag smallint
+  dislike_flag smallint,
+  PRIMARY KEY (restaurant_id, id)
 );
