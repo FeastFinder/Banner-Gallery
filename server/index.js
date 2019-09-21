@@ -3,6 +3,7 @@
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const db = require('../db/index.js');
 
 const app = express();
@@ -13,12 +14,7 @@ app.use(express.static('public'));
 app.use('/:listing', express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+app.use(cors());
 
 app.get('/api/:listing', (req, res) => {
   db.getImagesFromListing(req.params.listing, (error, images) => {

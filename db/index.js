@@ -10,7 +10,8 @@ const pgClient = new pg.Client(connectionString);
 pgClient.connect();
 
 const getImagesFromListing = (listingId, cb) => {
-  const id = Number(listingId.slice(1));
+  // const id = Number(listingId.slice(1));
+  const id = listingId;
 
   pgClient.query(`SELECT * FROM images WHERE restaurant_id = ${id}`, (error, results) => {
     if (error) { console.log(error); }
@@ -43,7 +44,6 @@ const deleteImageFromListing = (req, res, cb) => {
 };
 
 const editImageInListing = (req, res, cb) => {
-  // console.log(req.body);
   const set = [];
   let counter = 0;
 
@@ -57,6 +57,8 @@ const editImageInListing = (req, res, cb) => {
     text: `UPDATE images SET ${set} WHERE id = ($1)`,
     values: Object.values(req.body),
   };
+
+  console.log(set);
 
   pgClient.query(query, (error, success) => {
     if (error) { cb(error, null); }

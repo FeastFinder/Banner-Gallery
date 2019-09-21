@@ -3,7 +3,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeImg = fs.createWriteStream('imgTable2.csv');
+const writeImg = fs.createWriteStream('imgTable.csv');
 writeImg.write('restaurant_id,url,description,user_name,date,unrelated_flag,inappropriate_flag,dislike_flag\n', 'utf8');
 
 const userTable = ['Robert',
@@ -76,20 +76,20 @@ const getUserName = () => userTable[getRandomInt(0, 60)];
 
 
 function writeManyRecords(writer, encoding, callback) {
-  let i = 1000000;
+  let i = 10000001;
   function write() {
     let ok = true;
     do {
       i -= 1;
       // counter += 1;
-      const data = `${i},${`https://foodpics.s3-us-west-1.amazonaws.com/food${getRandomInt(0, 101)}.jpg`},${getSentence()},${getUserName()},${getDate()},${getRandomInt(0, 3)},${getRandomInt(0, 3)},${getRandomInt(0, 3)}\n`;
-      if (i === 0) {
+      const data = `${i},${`https://foodpics.s3-us-west-1.amazonaws.com/food${getRandomInt(0, 101)}.png`},${getSentence()},${getUserName()},${getDate()},${getRandomInt(0, 3)},${getRandomInt(0, 3)},${getRandomInt(0, 3)}\n`;
+      if (i === 1) {
         writer.write(data, encoding, callback);
       } else {
         ok = writer.write(data, encoding);
       }
-    } while (i > 0 && ok);
-    if (i > 0) {
+    } while (i > 1 && ok);
+    if (i > 1) {
       writer.once('drain', write);
     }
   }
