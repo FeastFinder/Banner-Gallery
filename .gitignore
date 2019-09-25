@@ -30,3 +30,6 @@ userTable.csv
 restTable.csv
 imgTable.csv
 imgTable2.csv
+newrelic_agent.log
+newrelic.js
+config.js

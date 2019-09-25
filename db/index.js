@@ -1,19 +1,18 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
 // const mysql = require('mysql');
-// const mysqlConfig = require('./config.js');
-const pg = require('pg');
+const { Pool } = require('pg');
+const config = require('./config.js');
 
-const connectionString = 'postgresql://smokey:password@localhost:5432/banner_images';
-const pgClient = new pg.Client(connectionString);
-// const connection = mysql.createConnection(mysqlConfig);
-pgClient.connect();
+const pool = new Pool(config);
+
+pool.connect();
 
 const getImagesFromListing = (listingId, cb) => {
   // const id = Number(listingId.slice(1));
   const id = listingId;
 
-  pgClient.query(`SELECT * FROM images WHERE restaurant_id = ${id}`, (error, results) => {
+  pool.query(`SELECT * FROM images WHERE restaurant_id = ${id}`, (error, results) => {
     if (error) { console.log(error); }
     cb(null, results);
   });
@@ -28,7 +27,7 @@ const addImageToListing = (req, res, cb) => {
     text: 'INSERT INTO images (restaurant_id, url, description, user_name, date) VALUES ($1, $2, $3, $4, $5)',
     values: [listing, url, description, user_name, date],
   };
-  pgClient.query(query, (error, success) => {
+  pool.query(query, (error, success) => {
     if (error) { cb(error, null); }
     cb(null, success);
   });
@@ -37,7 +36,7 @@ const addImageToListing = (req, res, cb) => {
 const deleteImageFromListing = (req, res, cb) => {
   const { id } = req.body;
 
-  pgClient.query(`DELETE FROM images WHERE id = ${id}`, (error, success) => {
+  pool.query(`DELETE FROM images WHERE id = ${id}`, (error, success) => {
     if (error) { cb(error, null); }
     cb(null, success);
   });
@@ -60,7 +59,7 @@ const editImageInListing = (req, res, cb) => {
 
   console.log(set);
 
-  pgClient.query(query, (error, success) => {
+  pool.query(query, (error, success) => {
     if (error) { cb(error, null); }
     cb(null, success);
   });

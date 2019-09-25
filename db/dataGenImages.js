@@ -3,7 +3,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeImg = fs.createWriteStream('imgTable.csv');
+const writeImg = fs.createWriteStream('imgTable2.csv');
 writeImg.write('restaurant_id,url,description,user_name,date,unrelated_flag,inappropriate_flag,dislike_flag\n', 'utf8');
 
 const userTable = ['Robert',
@@ -97,23 +97,5 @@ function writeManyRecords(writer, encoding, callback) {
 }
 
 writeManyRecords(writeImg, 'utf-8', () => {
-  writeManyRecords(writeImg, 'utf-8', () => {
-    writeManyRecords(writeImg, 'utf-8', () => {
-      writeManyRecords(writeImg, 'utf-8', () => {
-        writeManyRecords(writeImg, 'utf-8', () => {
-          writeManyRecords(writeImg, 'utf-8', () => {
-            writeManyRecords(writeImg, 'utf-8', () => {
-              writeManyRecords(writeImg, 'utf-8', () => {
-                writeManyRecords(writeImg, 'utf-8', () => {
-                  writeManyRecords(writeImg, 'utf-8', () => {
-                    writeImg.end();
-                  });
-                });
-              });
-            });
-          });
-        });
-      });
-    });
-  });
+  writeImg.end();
 });

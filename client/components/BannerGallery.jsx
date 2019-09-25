@@ -51,15 +51,16 @@ class BannerGallery extends React.Component {
     listing = listing[1];
 
     axios.get(`http://localhost:3001/api/${listing}/photos`)
-      .then((res) => {
-        console.log(listing);
+
+      .then((photos) => {
         this.setState({
-          images: res.data.rows
+          images: photos.data.rows
         });
       })
       .catch((err) => {
         console.log(err);
       });
+
   }
 
   openModal(image) {
