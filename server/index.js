@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
+const newRelic = require('newrelic');
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
@@ -17,8 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get('/api/:listing/photos', (req, res) => {
-  db.getImagesFromListing(req.params.listing, (error, images) => {
-    if (error) { return error; }
+  const { listing } = req.params;
+  db.getImagesFromListing(listing, (error, images) => {
+    if (error) { res.send(error); }
     res.send(images);
     return undefined;
   });
