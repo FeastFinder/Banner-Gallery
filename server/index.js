@@ -12,7 +12,7 @@ const port = 3001;
 
 app.use(compression());
 app.use(express.static('public'));
-app.use('/:listing/photos', express.static('public'));
+app.use('restaurant/:listing/photos', express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
