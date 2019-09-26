@@ -5,7 +5,7 @@ config:
       arrivalRate: 100
   defaults:
     headers:
-      x-my-service-auth: ''
+      x-my-service-auth: '987401838271002188298567'
 scenarios:
   - flow:
     - loop:
