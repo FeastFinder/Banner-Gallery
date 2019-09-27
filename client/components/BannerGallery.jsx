@@ -48,7 +48,7 @@ class BannerGallery extends React.Component {
     let url = window.location.pathname;
 
     let listing = url.split('/');
-    listing = listing[2];
+    listing = listing[1];
 
     axios.get(`http://13.57.229.60:3001/api/${listing}/photos`)
 
@@ -98,6 +98,7 @@ class BannerGallery extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <Gallery>
         <GlobalStyle />
